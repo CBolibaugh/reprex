@@ -1,0 +1,458 @@
+---
+title: "Help!...& how to get it"
+subtitle: "r cafe"
+author: "Cylcia Bolibaugh"
+institute: "Dept of Education, UoY"
+date: 2021-05-27
+output:
+  xaringan::moon_reader:
+    seal: false
+    lib_dir: libs
+    css:  xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+
+
+---
+class: center, middle
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(tidyverse)
+library(xaringanthemer)
+#devtools::install_github("hadley/emo")
+library(emo)
+
+
+style_duo_accent(
+  primary_color = "#ff8811",
+  secondary_color = "#F4790B",
+  title_slide_text_color = "#FFFFFF",
+  text_bold_color = "#1c5253",
+  #base_color = "#ff8811",
+  header_font_google = google_font("Josefin Sans"),
+  text_font_google   = google_font("Montserrat", "300", "300i"),
+  code_font_google   = google_font("Fira Mono"),
+  base_font_size = "22px",
+  link_color = "#F4790B",
+  code_highlight_color = "rgba(244, 121, 11, 0.5)"
+)
+
+
+
+```
+
+
+# Help! . . . & how to get it
+
+### Cylcia Bolibaugh
+#### R Cafe 2021-05-27
+
+.footnote[
+cylcia.bolibaugh@york.ac.uk    
+Department of Education, University of York
+]
+
+---
+
+```{r, echo = FALSE, out.width = "40%", fig.alt = "Logo for EROS"}
+knitr::include_graphics("figs/EROSlogo_black.png")
+```
+## Before we begin
+
+**r cafe** is an initiative of EROS, the departmental working group for open research.
+
+
+Come to our next EROS meeting: Week 8, Thurs 10 June, 2-3pm
+
+
+---
+## The basics
+**R Cafe**    
+When and where? From Week 6, Thursdays 1:00-2:00pm, online    
+
+
+**What is it?**     
+We are a peer support group in the Department of Education for all those interested in learning and using r. We hold weekly drop-ins to troubleshoot, learn and share resources.
+
+
+**Who is it for?**    
+_Everyone_ is welcome, from complete beginner to code ninja, Stage 1 undergraduate to full prof :).
+
+
+**I want to get involved (but can’t make it to the meeting).**     
+Join our Google Group to get updates, share resources and ask questions
+
+---
+## The format
+
+#### _Like a writing support group, but for r_
+
+
+- *Writing group* - drop in and code, ask for help to troubleshoot 
+
+#### _...and with some extras_
+
+- *Show and tell* - code review style, come and present your code for 15 minutes + Q/A
+
+
+- *Pre-determined discussion topic* - we pick a topic (e.g. keeping your directories straight, updating R, collaborating with non R users :), and share our experiences.
+
+
+- **Special events (termly)** - e.g., how reproducible is your code? Buddy code swap/review, training sessions on special topic
+
+####We need r users of *all levels* to make it work - there is no code shaming here!
+
+---
+background-image: url(https://media.giphy.com/media/ejpCynLi88pGEUbmvQ/giphy.gif)
+background-position: 50% 50%
+class: center, bottom, inverse
+
+# Join us!
+---
+class: center, middle
+
+# your code will break sometime
+
+### we all need help :)
+
+---
+## Looking for help - ways to go about it
+#### (in order of increasing likelihood that you will succeed)
+
+-Share your screen  
+
+--
+
+-Take a screenshot of your code and email it/post it
+
+--
+
+-Copy and paste some code into a document/email/chat box
+
+--
+
+-Send your whole script and data files
+
+--
+</br></br>
+.center[**Make a reproducible example!**]
+
+
+
+.footnote[*This isn't about debugging or googling your errors (try that first!)*]
+
+---
+class: middle
+
+#### "If you need help getting unstuck, the first step is to create a **reprex**, or reproducible example. The goal of a reprex is to package your problematic code in such a way that **other people can run it** and feel your pain. Then, hopefully, they can provide a solution and put you out of your misery."
+
+####https://www.tidyverse.org/help/
+
+---
+class: middle, center
+
+# "other people can run it"
+
+
+### `r emo::ji("check")` .libraries
+
+### `r emo::ji("check")` code
+
+### `r emo::ji("check")` data
+
+
+---
+
+## What is a reprex?
+
+The term *reprex* stands for **repr**oducible **ex**ample.
+
+If you ever ask for R help on a forum, you will be asked for example code that reproduces the problem: a *reprex*.
+
+
+---
+
+
+## What is in a reprex?
+
+<br/>
+A reprex should include:    
+    
+> - A **minimal dataset**, necessary to reproduce the issue  
+> - The **minimal runnable code** necessary to reproduce the issue, which can be run
+on the given dataset, and including the necessary information on the used packages  
+
+
+
+*From the RStudio Community guide*
+
+---
+## How do I make a reproducible example?
+
+Two packages can help:
+- Datapasta
+- ReprEx
+<br/><br/>
+.center[
+```{r, echo = FALSE, out.width = "20%", fig.alt = "Reprex package logo"}
+knitr::include_graphics(c("figs/datapasta.png", "figs/reprex.png"))
+```
+]
+---
+
+## A minimal dataset
+Sharing huge data sets is not necessary and may rather discourage others from reading your question.
+
+Instead you can:
+
+- (1/3) rewrite your code to run using one of R's built-in datasets. Find them using `data()`, and explore their variables with `str()`
+
+- (2/3) simulate data to run your code on(i.e. create a fake dataset)
+
+- (3/3) use the `datapasta` package to provide a portion of your real data
+
+**If sharing any real data, make sure that it's properly anonymised!**
+
+
+
+---
+### R's built-in datasets 
+Find a built-in dataset (`data()`) that has similar characteristics to yours (e.g. numeric, factor). A couple examples:
+```{r}
+str(trees)
+```
+```{r}
+str(chickwts)
+```
+ 
+---
+### Simulate data (1/2)
+
+
+Create a simple, fake dataset:
+```{r}
+myDataSet <- tibble(
+  x = 1:5, 
+  y = 1, 
+  z = x ^ 2 + y
+)
+myDataSet
+```
+
+---
+
+### Simulate data (2/2)
+Create a more complex, fake dataset:
+.smallest[
+```{r}
+# Simulate 50 subjects, 20 items, & pre/posttest accuracy scores. 
+# This is the control group, so specify no learning gains.
+# Assume there was a .25 probably of accuracy at pretest.
+library(tidyverse)
+
+n_subjects <- 50
+n_items <- 20
+all_subjects<-tibble()
+
+for (i in 1:n_subjects){
+sim_test <- tibble(
+  group = rep("control", n_items),
+  subj_id = rep(i,n_items),#repeat the subject ID for each item
+  item_id = (seq(1,n_items)),#generate an id code for each item
+  pretest = rbinom(n_items, 1, 0.25),#generate responses with a bias of .25
+  posttest= ifelse(pretest == "0", 0, 1)#no learning or loss on posttest
+) 
+all_subjects<-rbind(all_subjects,sim_test)#each time through, bind the new datapoints to the main tibble
+}
+```
+]
+---
+###Get a small portion of your real data (1/2)
+(A fuller tutorial on using `datapasta` from Mara Averick [here](https://maraaverick.rbind.io/2018/10/reprex-with-datapasta/))
+- Install the `datapasta` package
+
+- OPTION 1: If you're working from a spreadsheet (e.g. your data is in a .csv or excel file - might even work with SPSS!)
+  - open the file and select **a few** rows and copy. 
+  
+  - Then go to your R script, and click the `Paste as tribble` option from the DATAPASTA section of the Addins dropdown. 
+  
+  - You now have a mini dataframe that can you assign to an object name and use 
+---
+#### OPTION 1 Datapasta (continued)
+Here's an example of Scottish top babynames. 
+
+- I opened the .csv in Excel, selected the first seven rows, and copied these.
+
+- I then came to my R script, and chose `Paste as tribble` option from the DATAPASTA section of the Addins dropdown, and assigned it to `myTibble`
+
+```{r }
+myTibble <- tibble::tribble(
+    ~yr, ~sex, ~FirstForename, ~number, ~rank,
+  1974L,  "B",        "David",   1794L,    1L,
+  1974L,  "B",         "John",   1528L,    2L,
+  1974L,  "B",         "Paul",   1260L,    3L,
+  1974L,  "B",         "Mark",   1234L,    4L,
+  1974L,  "B",        "James",   1202L,    5L
+  )
+```
+
+---
+###Get a small portion of your real data (2/2)
+OPTION 2: If you're working from a dataframe or object already loaded in R, and you want to insert it into a reprex.
+  - use `datapasta::dpasta()` to render your object into the same format as the result of `Paste as tribble`
+  
+  - Assign the new code to an object and use in your code!
+
+Here's an example where I use `head()`to extract the first 6 rows of the built-in trees dataset, and then render with `datapasta::dpasta()`
+
+```{r eval=FALSE}
+head(trees) %>% 
+  datapasta::dpasta()
+
+# data.frame(    
+#        Girth = c(8.3, 8.6, 8.8, 10.5, 10.7, 10.8),    
+#       Height = c(70, 65, 63, 72, 81, 83),     
+#       Volume = c(10.3, 10.3, 10.2, 16.4, 18.8, 19.7)     
+# )
+
+```
+
+---
+## Minimal Code
+The next step is to put together:
+1. an example of the code that is causing you troubles,
+1. the libraries that you are using for that code,
+1. the data from the last step.
+
+```{r eval=FALSE}
+# Include library calls needed
+library(ggplot2) 
+
+# Include the sample data from the last step
+mydataframe <- data.frame(
+       Girth = c(8.3, 8.6, 8.8, 10.5, 10.7, 10.8),
+      Height = c(70, 65, 63, 72, 81, 83),
+      Volume = c(10.3, 10.3, 10.2, 16.4, 18.8, 19.7)
+)
+
+# Narrow down your code to just the problematic part.
+ggplot(data = mydataframe, x = Girth, y = Height) +
+  geom_point()
+    
+```
+---
+class: center, middle
+
+In case you didn't spot the error in the last slide, I forgot to put my variables inside the aes() function, in the ggplot call.
+    
+---
+### Minimal Code
+
+####But how do I know what code to include?
+
+The absolute minimum amount of code that can reproduce the problem. No extra packages, no extra data manipulation steps, etc.
+
+>"Add one line until it breaks ..."    
+
+>"Remove one line until it works ... then add back the broken line"
+
+Sharla Gelfand: [make a reprex...please](https://make-a-reprex-please.netlify.app)
+---
+### Pulling it all together
+
+####You've got your code, libraries data, all in a single script
+
+Here is our example again:
+```{r eval=FALSE}
+# Include library calls needed
+library(ggplot2) 
+
+# Include the sample data from the last step
+mydataframe <- data.frame(
+       Girth = c(8.3, 8.6, 8.8, 10.5, 10.7, 10.8),
+      Height = c(70, 65, 63, 72, 81, 83),
+      Volume = c(10.3, 10.3, 10.2, 16.4, 18.8, 19.7)
+)
+
+# Narrow down your code to just the problematic part.
+ggplot(data = mydataframe, x = Girth, y = Height) +
+  geom_point()
+
+#what's your environment?   
+sessioninfo::session_info()
+```
+---
+### Pulling it all together (1/2)
+
+####You've got your code, libraries data, all in a single script
+
+Use the `reprex` package to check it's self-contained and then share it.
+- `reprex` is installed as part of the tidyverse or you can install it by itself.
+
+- `reprex` will check whether your reproducible example *really is* self-contained and reproducible, before you send it someone else.
+
+
+- After installation, `reprex` also appears in the `Addins` drop-down menu.
+---
+### Pulling it all together (2/2)
+
+####You've got your code, libraries data, all in a single script
+
+OPTION 1: 
+Select all relevant code, and copy it (`Ctrl` or `Cmd` + `C`). Run `reprex::reprex()` in the console.
+
+OPTION 2: 
+Select all relevant code, and from the drop-down `Addins` `Reprex` menu, select `Reprex selection`.
+
+Your correctly rendered code will appear in markdown format in the Viewer window, _and_ will now be **ready on your clipboard for you to paste** in a forum post, email, or zoom chat :).
+
+> Remember, if the code isn't self-contained, `Reprex` will throw an error!
+
+---
+
+## Resources
+<br/>
+<br/>
+- [Stack Overflow canonical thread](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example)  
+- [Intro article](https://reprex.tidyverse.org/) and [Reprex do's and don'ts](https://reprex.tidyverse.org/articles/reprex-dos-and-donts.html) from the **reprex** website  
+- [RStudio quick guide](https://community.rstudio.com/t/faq-how-to-do-a-minimal-reproducible-example-reprex-for-beginners/23061)
+- Sharla Gelfand's "make a reprex... please" [slides](https://make-a-reprex-please.netlify.app/#1) and [recording](https://t.co/860RTqMvjy)   
+- Ariel Muldoon's "How to reprex" [presentation](https://aosmith16.github.io/spring-r-topics/slides/week09_reprex.html#1)
+- [How to Datapasta](https://milesmcbain.github.io/datapasta/articles/how-to-datapasta.html)  
+<br/>
+<br/>
+.center[
+```{r, echo = FALSE, out.width = "20%", fig.alt = "Reprex package logo"}
+knitr::include_graphics(c("figs/datapasta.png", "figs/reprex.png","figs/Rstudio.png"))
+```
+]
+
+---
+
+## Credits
+
+Some material in this post was adapted from:
+- Ariel Muldoon's "How to reprex" [presentation](https://aosmith16.github.io/spring-r-topics/slides/week09_reprex.html#1)
+- Sharla Gelfand's "make a reprex... please" [slides](https://make-a-reprex-please.netlify.app/#1)
+
+.footnote[
+Slides created via the R packages: [**xaringan**](https://github.com/yihui/xaringan), 
+[gadenbuie/xaringanthemer](https://github.com/gadenbuie/xaringanthemer) 
+
+.center[*This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. 
+To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/.*]
+]
+---
+
+
+
+
+
+
